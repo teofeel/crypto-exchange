@@ -13,3 +13,5 @@ NodeJS - za razliku od JS, mozemo ga koristiti i van browsera, open-source je i 
 ExpresJS - NodeJS framework, koristi se na server strani i pomocu njega se lako kreiraju API-ji
 JSON - format za razmenu podataka, lak za citanje i pisanje
 fs - file system, sluzi za rad sa fajlovima 
+
+Teodor Perunicic, teodor.perun1@gmail.com
