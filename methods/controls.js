@@ -5,15 +5,19 @@ var fs = require('fs')
 
 var functions = require('./functions')
 
-var orderbookFile = fs.readFileSync('./db/orderbook.json', 'utf-8')
-var orderBook = JSON.parse(orderbookFile)
 
-var ordersFile = fs.readFileSync('./db/orders.json', 'utf-8')
-var orders = JSON.parse(ordersFile)
+
+
 
 
 exports.newOrder = (req,res)=>{
     try{
+        var orderbookFile = fs.readFileSync('./db/orderbook.json', 'utf-8')
+        var orderBook = JSON.parse(orderbookFile)
+
+        var ordersFile = fs.readFileSync('./db/orders.json', 'utf-8')
+        var orders = JSON.parse(ordersFile)
+
         const id = req.body.id;
         const currencyPair = req.body.currencyPair
         const type = req.body.type
@@ -31,16 +35,13 @@ exports.newOrder = (req,res)=>{
         }
         else{
                 orders.sellOrders.push(newOrder)
-                console.log(1)
                 orders = functions.realizeSellOrder(newOrder,orders)
         }
-        console.log(1)
-    
-    
-        console.log(orders)
+       
     
         var update = JSON.stringify(orders)
         fs.writeFileSync('./db/orders.json', update)
+        
         res.send(newOrder)
         res.status(201)
     }
@@ -52,7 +53,21 @@ exports.newOrder = (req,res)=>{
 }
 
 exports.delete = (req,res)=>{
-    var newOrdersFile = fs.writeFileSync('./db/orders.json', "[]")
+    var ordersFile = fs.readFileSync('./db/orders.json', 'utf-8')
+    var orders = JSON.parse(ordersFile)
+
+    var orderbookFile = fs.readFileSync('./db/orderbook.json', 'utf-8')
+    var orderBook = JSON.parse(orderbookFile)
+
+    var ordrs = {"buyOrders":[],"sellOrders":[]}
+    var update = JSON.stringify(ordrs)
+
+    var newOrdersFile = fs.writeFileSync('./db/orders.json', update)
+    var newOrderBookFile = fs.writeFileSync('./db/orderbook.json', update)
+
+    var updt = JSON.stringify([])
+    var newTradesFile = fs.writeFileSync('./db/trades.json', updt)
+    
     res.send(200)
     res.status(200)
 } 
