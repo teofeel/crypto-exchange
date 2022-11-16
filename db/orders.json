@@ -1,1 +1,1 @@
-{"buyOrders":[],"sellOrders":[]}
+{"buyOrders":[{"id":1,"createdDateTime":"2022-11-16T21:17:00.664Z","currencyPair":"BTCUSD","type":"BUY","price":5,"quantity":15,"filledQuantity":0,"orderStatus":"OPEN","trades":[]},{"id":1,"createdDateTime":"2022-11-16T21:17:10.140Z","currencyPair":"BTCUSD","type":"BUY","price":5,"quantity":15,"filledQuantity":0,"orderStatus":"OPEN","trades":[]}],"sellOrders":[]}

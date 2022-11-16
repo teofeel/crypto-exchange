@@ -22,13 +22,20 @@ exports.orderByID = (req,res) => {
     var ordersFile = fs.readFileSync('./db/orders.json', 'utf-8')
     var orders = JSON.parse(ordersFile)
 
-    var id = req.params.id
-    for(i in orders){
-        console.log(orders[i].id)
-        if(orders[i].id == id){
-            res.status(200)
-            res.send(orders[i])
+    var id = parseFloat(req.params.id)
+    for(i in orders.buyOrders){
+        console.log(orders.buyOrders[i].id)
+        if(orders.buyOrders[i].id == id){
+            res.status(200).send(orders.buyOrders[i])
+            return
         }
     }
-    res.send(400)
+    for(i in orders.sellOrders){
+        console.log(orders.sellOrders[i].id)
+        if(orders.sellOrders[i].id == id){
+            res.status(200).send(orders.sellOrders[i])
+            return
+        }
+    }
+    res.sendStatus(400)
 }
