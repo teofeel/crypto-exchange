@@ -139,12 +139,12 @@ updateTrades = (trade)=>{
 
 exports.realizeBuyOrder = (order,orders)=>{
     orders = sortOrders(orders)
-    console.log(1)
+    
     for(i in orders.sellOrders){
         if(orders.sellOrders[i].orderStatus=='OPEN' && orders.sellOrders[i].price<=order.price){
             if((order.quantity-order.filledQuantity) < (orders.sellOrders[i].quantity - orders.sellOrders[i].filledQuantity)){
                 //ova radi
-                console.log(2)
+                
                 orders.sellOrders[i].filledQuantity += order.quantity-order.filledQuantity 
 
 
@@ -182,7 +182,7 @@ exports.realizeBuyOrder = (order,orders)=>{
             }
             else if((order.quantity-order.filledQuantity)>(orders.sellOrders[i].quantity - orders.sellOrders[i].filledQuantity)){
                 //ova radii
-                console.log(4)
+                
                 order.filledQuantity += orders.sellOrders[i].quantity - orders.sellOrders[i].filledQuantity
 
                 orders.sellOrders[i].filledQuantity = orders.sellOrders[i].quantity

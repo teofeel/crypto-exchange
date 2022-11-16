@@ -68,6 +68,5 @@ exports.delete = (req,res)=>{
     var updt = JSON.stringify([])
     var newTradesFile = fs.writeFileSync('./db/trades.json', updt)
     
-    res.send(200)
-    res.status(200)
+    res.sendStatus(200)
 } 
